@@ -1,5 +1,7 @@
 
 $("#find-artists").on("click", function(){
+  $("#artist-info").empty();
+  $("#similar-artist-info").empty();
   var artistSearch = $(".form-control").val();
   var queryURL = "https://cors-anywhere.herokuapp.com/http://musicovery.com/api/V4/artist.php?fct=search&artistname=" + artistSearch + "&format=json"
   console.log(artistSearch)
@@ -12,11 +14,19 @@ $.ajax({
   console.log(response)
   console.log(typeof response)
   simArtist = JSON.parse(response).root.artists.artist.mbid;
-  var ArtistName = JSON.parse(response).root.artists.artist.name;
+  var artistName = JSON.parse(response).root.artists.artist.name;
   console.log(simArtist)
-
+  var numSimArtist = $("#similar-output").val().trim();
   similarURL = "https://cors-anywhere.herokuapp.com/http://musicovery.com/api/V4/artist.php?fct=getsimilar&id=" + simArtist + "&resultsnumber=3&format=json"
-  $("#artist-info").html("<p>" + ArtistName + "</p>")
+  var artistGenre = JSON.parse(response).root.artists.artist.genre;
+  var artistCountry = JSON.parse(response).root.artists.artist.country;
+  var genre = $("<p>").addClass("genre-class").append("Genre: " + artistGenre);
+  var country = $("<p>").addClass("country-class").append("Country: " + artistCountry);
+  console.log(genre)
+  console.log(country)
+  $("#artist-info").append("<h3>" + artistName + "</h3>")
+  $("#artist-info").append(genre)
+  $("#artist-info").append(country)
   callit();
 })
  function callit() {
@@ -24,10 +34,20 @@ $.ajax({
     url: similarURL,
     method: "GET"
   }).done(function(newResponse){
+    // numSimArtist = $("#similar-output").val().trim();
+    // numSimArtist = parseInt(numSimArtist)
+    // console.log(numSimArtist)
     console.log(newResponse)
     for (var i = 0; i < 3; i++) {
-     var simName = JSON.parse(newResponse).root.artists.artist[i].name
-    $("#similar-artist-info").append("<p>" + simName + "</p>")
+     var simName = JSON.parse(newResponse).root.artists.artist[i].name;
+     console.log(simName)
+     artistGenre = JSON.parse(newResponse).root.artists.artist[i].genre;
+     artistCountry = JSON.parse(newResponse).root.artists.artist[i].country;
+     var simGenre = $("<p>").addClass("genre-class").append("Genre: " + artistGenre);
+     var simCountry = $("<p>").addClass("country-class").append("Country: " + artistCountry);
+    $("#similar-artist-info").append("<h3>" + simName + "</h3>");
+    $("#similar-artist-info").append(simGenre);
+    $("#similar-artist-info").append(simCountry)
   }
   })
 }

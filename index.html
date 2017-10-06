@@ -9,6 +9,7 @@
 <!-- <link rel="stylesheet" type="text/css" href="assets/styles.css"> -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="assets/css/app.css">
 
 
 
@@ -19,7 +20,7 @@
 <!-- HEADER -->
 <div class="container">
   <div class="page-header">
-      <h1 class="jumbotron">Find You Music<small> </small></h1>
+      <h1 id="header" class="jumbotron">Find You Music<small> </small></h1>
   </div>
 <!-- HEADER END -->
 
@@ -49,6 +50,13 @@
 
         <div class="input-group">
             <input type="text" id="searches" class="form-control" placeholder="- artist name -">
+            <!-- this SPAN makes the button in-line to my search bar -->
+<!--             <span class="input-group-btn"> 
+              <button class="btn btn-default" id="find-artists" type="button">Go!</button>
+            </span> -->
+        <!-- </div><br>  -->
+        <!-- <div class="input-group"> -->
+            <input type="number" id="similar-output" class="form-control" value="3" placeholder="- amount of similar artists -">
             <!-- this SPAN makes the button in-line to my search bar -->
             <span class="input-group-btn"> 
               <button class="btn btn-default" id="find-artists" type="button">Go!</button>
