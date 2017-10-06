@@ -4,3 +4,12 @@ h1, .jumbotron {
  text-align: center;
  font-size: 40px;
 }
+h3 {
+  display: inline;
+}
+.country-class {
+  padding-bottom: 30px;
+}
+.genre-class {
+  padding-top: 15px;
+}
