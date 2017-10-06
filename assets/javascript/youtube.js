@@ -8,5 +8,8 @@ $.ajax({
   method: "GET"
 }).done(function(response) {
   console.log(response.items)
-  console.log(response.items[0].id.videoId);
+
+  for (var i = 0; i < 3; i++) {
+    console.log("https://www.youtube.com/watch?v=" + response.items[i].id.videoId);
+  }
 })
