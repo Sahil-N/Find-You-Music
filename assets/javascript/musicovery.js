@@ -7,6 +7,12 @@ $("#find-artists").on("click", function(){
   console.log(artistSearch)
 var simArtist;
 var similarURL;
+
+
+var similarMbid = [];
+var similarName = [];
+
+
 $.ajax({
   url: queryURL,
   method: "GET"
@@ -29,6 +35,7 @@ $.ajax({
   $("#artist-info").append(genre);
   $("#artist-info").append(country);
   callit();
+
 })
  function callit() {
   $.ajax({
@@ -42,6 +49,15 @@ $.ajax({
     for (var i = 0; i < 3; i++) {
      var simName = JSON.parse(newResponse).root.artists.artist[i].name;
      console.log(simName)
+     var simMbid = JSON.parse(newResponse).root.artists.artist[i].mbid;
+     console.log(simMbid)
+
+     similarMbid.push(simMbid);
+     similarName.push(simName);
+
+    // console.log(similarMbid);
+    // console.log(similarName);
+
      artistGenre = JSON.parse(newResponse).root.artists.artist[i].genre;
      artistCountry = JSON.parse(newResponse).root.artists.artist[i].country;
      var simGenre = $("<p>").addClass("genre-class").append("Genre: " + artistGenre);
@@ -53,6 +69,11 @@ $.ajax({
   }
   })
 }
+
+  console.log(similarMbid);
+  console.log(similarName);
+
+
 })
 // run an intial search
 //pull unique artist id, store it as a variable
