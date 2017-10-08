@@ -60,3 +60,7 @@ $.ajax({
 // id="searches" push to artist search
 
 
+
+$("#login").on("click", function() {
+  var link = $("<a>").attr("href", "index.html");
+})

@@ -13,3 +13,16 @@ h3 {
 .genre-class {
   padding-top: 15px;
 }
+#login-name, input {
+  width: 50%;
+  text-align: center;
+}
+.contain1 {
+  margin-left: 25%;
+}
+button, #login {
+  margin-left: 24%;
+}
+/*#login {
+  display: inline;
+}*/
