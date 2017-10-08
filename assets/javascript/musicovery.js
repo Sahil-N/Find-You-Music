@@ -16,7 +16,7 @@ $.ajax({
   simArtist = JSON.parse(response).root.artists.artist.mbid;
   var artistName = JSON.parse(response).root.artists.artist.name;
   console.log(simArtist)
-  var numSimArtist = $("#similar-output").val().trim();
+  // var numSimArtist = $("#similar-output").val().trim();
   similarURL = "https://cors-anywhere.herokuapp.com/http://musicovery.com/api/V4/artist.php?fct=getsimilar&id=" + simArtist + "&resultsnumber=3&format=json"
   var artistGenre = JSON.parse(response).root.artists.artist.genre;
   var artistCountry = JSON.parse(response).root.artists.artist.country;
