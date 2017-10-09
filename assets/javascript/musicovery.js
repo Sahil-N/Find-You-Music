@@ -8,12 +8,13 @@
   };
   firebase.initializeApp(config);
   var database = firebase.database();
-
-     var login = $("#login-name").val();
+  var pathName;
+  var login = $("#login-name").val();
   console.log(login)
   $("#login").on("click", function() {
    login = $("#login-name").val();
-
+   pathName.push(login);
+   console.log(pathName)
     database.ref(login).set({
       name: login
     })
@@ -57,7 +58,8 @@ $.ajax({
   $("#artist-info").append(genre);
   $("#artist-info").append(country);
   callit();
-  database.ref(login).push({
+  var old = database.ref('history');
+database.ref('history1').push({
     search: artistName
   })
 
