@@ -1,3 +1,46 @@
+var config = {
+  apiKey: "AIzaSyDutKB5-pO3S0vsKPmUCfeL6V5KT1hRzNg",
+  authDomain: "test-music-4083a.firebaseapp.com",
+  databaseURL: "https://test-music-4083a.firebaseio.com",
+  projectId: "test-music-4083a",
+  storageBucket: "",
+  messagingSenderId: "193987209813"
+};
+firebase.initializeApp(config);
+var database = firebase.database();
+
+$("#searches").hide();
+$("#find-artists").hide();
+
+var login = "";
+$("#loginbutton").on("click", function() {
+  login = $("#loginname").val().trim();
+  console.log(login);
+  $("#loginname").hide();
+  $("#loginbutton").hide();
+  $("#searches").show();
+  $("#find-artists").show();
+  updateHistory();
+})
+
+function updateHistory() {
+  $("#history").empty();
+  database.ref(login).on("child_added", function(snapshot) {
+    var history = snapshot.val().search;
+    var newButton = $("<button>").text(history);
+    newButton.attr("class", "list-group-item rendered")
+    newButton.attr("data-name", history)
+    $("#history").prepend(newButton);
+  })
+}
+
+$("#history").on("click", ".rendered", function() {
+  var artist = $(this).attr("data-name");
+  $("#artist-info").empty();
+  $("#similar-artist-info").empty();
+  getArtist(artist);
+})
+
 var artistId;
 var similarURL;
 var similarMbid = [];
@@ -47,6 +90,7 @@ function getArtist(name) {
     $("#artist-info").append(country);
     getSimilar(artistId);
     ytSearch(name);
+    updateHistory();
   })
 }
 
@@ -65,49 +109,9 @@ function ytSearch(search) {
 $("#find-artists").on("click", function(){
   $("#artist-info").empty();
   $("#similar-artist-info").empty();
-  var artist = $(".form-control").val().trim();
+  var artist = $("#searches").val().trim();
+  database.ref(login).push({
+    search: artist
+  })
   getArtist(artist);
 });
-
-// var config = {
-//   apiKey: "AIzaSyDutKB5-pO3S0vsKPmUCfeL6V5KT1hRzNg",
-//   authDomain: "test-music-4083a.firebaseapp.com",
-//   databaseURL: "https://test-music-4083a.firebaseio.com",
-//   projectId: "test-music-4083a",
-//   storageBucket: "",
-//   messagingSenderId: "193987209813"
-// };
-// firebase.initializeApp(config);
-
-// var database = firebase.database();
-
-
-// ytSearch("porter robinson");
-
-// $("#submit").on("click", function() {
-//   event.preventDefault();
-//   console.log("button pressed")
-//   var artist = $("#artist").val().trim();
-
-//   database.ref().push({
-//     artist: artist
-//   })
-// })
-
-// curl -X "POST" -H "Authorization: Basic ZjM4ZjAw...WY0MzE=" -d grant_type=client_credentials https://accounts.spotify.com/api/token
-
-// $.ajax({
-//   url: "https://cors-anywhere.herokuapp.com/https://accounts.spotify.com/api/token",
-//   method: "POST",
-//   data: '{"grant_type":"client_credentials"}',
-//   beforeSend: function(xhr) {
-//     xhr.setRequestHeader("Authorization", "Basic OWM0N2RkOTE0MmZkNDQ4MGEzNzcxYmZiMTk1YzEzOTI6MzNjNzI4OGY5NTBkNGUwY2I2N2MzMDZjMjMzMTZjODA=");
-//     xhr.setRequestHeader('Accept', "application/json");
-//   }
-//   // header: {
-//   //   'Authorization': 'Basic OWM0N2RkOTE0MmZkNDQ4MGEzNzcxYmZiMTk1YzEzOTI6MzNjNzI4OGY5NTBkNGUwY2I2N2MzMDZjMjMzMTZjODA=',
-//   //   'Content-Type': 'application/x-www-form-urlencoded'
-//   // },
-// }).done(function(response) {
-//   console.log(response);
-// })
