@@ -1,0 +1,49 @@
+<!doctype html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>find me music</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="page-header">
+      <h1 id="header" class="jumbotron">Find You Music<small> </small></h1>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="row">
+        <div id="artist-info"></div>
+      </div>
+      <div class="row">
+        <div id="similar-artist-info"></div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="row">
+        <div class="input-group">
+          <input type="text" id="loginname" class="form-control" placeholder="id">
+          <span class="input-group-btn">
+          <button class="btn btn-default" id="loginbutton" type="button">login</button>
+          </span>
+          <input type="text" id="searches" class="form-control" placeholder="- artist name -">
+          <span class="input-group-btn"> 
+          <button class="btn btn-default" id="find-artists" type="button">Go!</button>
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="list-group" id="history"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+<script src="assets/javascript/javascript.js"></script>
+
+</body>
+</html>
