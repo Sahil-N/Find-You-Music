@@ -8,24 +8,14 @@
   };
   firebase.initializeApp(config);
   var database = firebase.database();
-  var pathName;
-  var login = $("#login-name").val();
-  console.log(login)
-  $("#login").on("click", function() {
-   login = $("#login-name").val();
-   pathName.push(login);
-   console.log(pathName)
-    database.ref(login).set({
-      name: login
-    })
-  });
+
 
 $("#find-artists").on("click", function(){
   $("#artist-info").empty();
   $("#similar-artist-info").empty();
   $("#searches").empty();
   var artistSearch = $(".form-control").val().trim();
-  var queryURL = "https://cors-anywhere.herokuapp.com/http://musicovery.com/api/V4/artist.php?fct=search&artistname=" + artistSearch + "&format=json"
+  var queryURL = "https://cors-anywhere.herokuapp.com/http://musicovery.com/api/V4/artist.php?fct=search&artistname=" + artistSearch + "&apikey=3lqa89g1&format=json"
   console.log(artistSearch)
 var simArtist;
 var similarURL;
@@ -46,7 +36,7 @@ $.ajax({
   var artistName = JSON.parse(response).root.artists.artist.name;
   console.log(simArtist)
   // var numSimArtist = $("#similar-output").val().trim();
-  similarURL = "https://cors-anywhere.herokuapp.com/http://musicovery.com/api/V4/artist.php?fct=getsimilar&id=" + simArtist + "&resultsnumber=3&format=json"
+  similarURL = "https://cors-anywhere.herokuapp.com/http://musicovery.com/api/V4/artist.php?fct=getsimilar&id=" + simArtist + "&resultsnumber=3&apikey=3lqa89g1&format=json"
   var artistGenre = JSON.parse(response).root.artists.artist.genre;
   var artistCountry = JSON.parse(response).root.artists.artist.country;
   var genre = $("<p>").addClass("genre-class").append("Genre: " + artistGenre);
@@ -99,7 +89,7 @@ database.ref('history1').push({
 
   console.log(similarMbid);
   console.log(similarName);
-
+  var playlistAPI = "https://cors-anywhere.herokuapp.com/http://musicovery.com/api/V4/playlist.php?&fct=getfromartist&artistmbid=" + simArtist + "&resultsnumber=5&format=json"
 
 })
 // run an intial search
