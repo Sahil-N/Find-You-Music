@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+  <title></title>
+</head>
+
+<link rel="stylesheet" type="text/css" href="assets/styles.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+
+<body>
+<!-- HEADER -->
+<div class="container">
+  <div class="page-header">
+      <h1>Find you Music<small> </small></h1>
+  </div>
+<!-- HEADER END -->
+  <div class="row">
+<!-- GIF's -->
+    <div class="col-md-8 outer">
+      <div id="gifs-appear-here">
+      </div>
+    </div>
+<!-- GIF's END -->
+<!-- INPUT's & SEARCH -->
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" id="searches" class="form-control" placeholder="- superhero name -">
+            <!-- this SPAN makes the button in-line to my search bar -->
+            <span class="input-group-btn"> 
+              <button class="btn btn-default" id="add-heroes" type="button">Go!</button>
+            </span>
+        </div><br> 
+        <div class="list-group" id="hero-list"> 
+        <!-- fill with array divs & newly added heroes buttons -->
+        </div>
+    </div>  <!-- col-lg-4 DIV -->
+  </div> <!-- Row DIV -->
+</div> <!-- Container DIV -->
+<!-- INPUT's & SEARCH -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="assets/script.js"></script> -->
+
+</body>
+</html>
