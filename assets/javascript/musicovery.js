@@ -66,12 +66,47 @@ $.ajax({
     $("#similar-artist-info").append("<h3>" + simName + "</h3>");
     $("#similar-artist-info").append(simGenre);
     $("#similar-artist-info").append(simCountry);
+    playlist();
   }
   })
 }
 
   console.log(similarMbid);
   console.log(similarName);
+
+
+//
+
+
+for (var i = 1; i <= 3; i++) {
+
+  var loopMbid = similarMbid + "[" + i + "]";
+  var relatedPlaylistUrl = "https://cors-anywhere.herokuapp.com/" + "http://musicovery.com/api/playlist.php?fct=artistseed&artistmbid=" + loopMbid + "&popularitymax=100&popularitymin=25&tracksnumber=3";
+
+ function playlist() {// Playlist from artist: make a plalist of 3 songs related to / also including original artist)
+    $.ajax({
+      url: relatedPlaylistUrl,
+      method: "GET"
+    }).done(function(playlistResponse){
+
+
+      console.log(playlistResponse);
+
+      var playlistTrackTitle = JSON.parse(playlistResponse).root.tracks.track[i].title;
+      var playlistArtist = JSON.parse(playlistResponse).root.tracks.track[i].artist.name;
+      var playlistPic = JSON.parse(playlistResponse).root.tracks.track[i].artist.imgurl;
+      
+      console.log(playlistTrackTitle)
+      console.log(playlistArtist)
+      console.log(playlistPic)
+
+
+
+})
+
+
+}
+}
 
 
 })
