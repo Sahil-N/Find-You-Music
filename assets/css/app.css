@@ -6,6 +6,8 @@ h1, .jumbotron {
 }
 h3 {
   display: inline;
+  color: #B7C3F3;
+  font-weight: 700;
 }
 .country-class {
   padding-bottom: 30px;
@@ -22,6 +24,12 @@ h3 {
 }
 button, #login {
   margin-left: 24%;
+}
+.genre-class {
+  color: #009FB7;
+}
+.country-class {
+  color: #009FB7;
 }
 /*#login {
   display: inline;

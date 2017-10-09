@@ -1,7 +1,28 @@
+  var config = {
+    apiKey: "AIzaSyBZ8sRlcmt39GEWn6r35ZQoWXVs2CMgHDE",
+    authDomain: "find-you-music.firebaseapp.com",
+    databaseURL: "https://find-you-music.firebaseio.com",
+    projectId: "find-you-music",
+    storageBucket: "find-you-music.appspot.com",
+    messagingSenderId: "1098210242637"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+
+     var login = $("#login-name").val();
+  console.log(login)
+  $("#login").on("click", function() {
+   login = $("#login-name").val();
+
+    database.ref(login).set({
+      name: login
+    })
+  });
 
 $("#find-artists").on("click", function(){
   $("#artist-info").empty();
   $("#similar-artist-info").empty();
+  $("#searches").empty();
   var artistSearch = $(".form-control").val().trim();
   var queryURL = "https://cors-anywhere.herokuapp.com/http://musicovery.com/api/V4/artist.php?fct=search&artistname=" + artistSearch + "&format=json"
   console.log(artistSearch)
@@ -17,12 +38,13 @@ $.ajax({
   url: queryURL,
   method: "GET"
 }).done(function(response){
+  login = $("#login-name").val();
   console.log(response)
   console.log(typeof response)
   simArtist = JSON.parse(response).root.artists.artist.mbid;
   var artistName = JSON.parse(response).root.artists.artist.name;
   console.log(simArtist)
-  var numSimArtist = $("#similar-output").val().trim();
+  // var numSimArtist = $("#similar-output").val().trim();
   similarURL = "https://cors-anywhere.herokuapp.com/http://musicovery.com/api/V4/artist.php?fct=getsimilar&id=" + simArtist + "&resultsnumber=3&format=json"
   var artistGenre = JSON.parse(response).root.artists.artist.genre;
   var artistCountry = JSON.parse(response).root.artists.artist.country;
@@ -35,6 +57,9 @@ $.ajax({
   $("#artist-info").append(genre);
   $("#artist-info").append(country);
   callit();
+  database.ref(login).push({
+    search: artistName
+  })
 
 })
  function callit() {
@@ -79,9 +104,3 @@ $.ajax({
 //pull unique artist id, store it as a variable
 // take variable and plug into similar artist url search
 // id="searches" push to artist search
-
-
-
-$("#login").on("click", function() {
-  var link = $("<a>").attr("href", "index.html");
-})
