@@ -3,6 +3,10 @@ var similarURL;
 var similarMbid = [];
 var similarName = [];
 
+database.ref(userid).on("child_added", function(snapshot) {
+  console.log(snapshot);
+}
+
 function getSimilar() {
   console.log(artistId);
   $.ajax({
@@ -69,30 +73,36 @@ $("#find-artists").on("click", function(){
   getArtist(artist);
 });
 
-// var config = {
-//   apiKey: "AIzaSyDutKB5-pO3S0vsKPmUCfeL6V5KT1hRzNg",
-//   authDomain: "test-music-4083a.firebaseapp.com",
-//   databaseURL: "https://test-music-4083a.firebaseio.com",
-//   projectId: "test-music-4083a",
-//   storageBucket: "",
-//   messagingSenderId: "193987209813"
-// };
-// firebase.initializeApp(config);
+var config = {
+  apiKey: "AIzaSyDutKB5-pO3S0vsKPmUCfeL6V5KT1hRzNg",
+  authDomain: "test-music-4083a.firebaseapp.com",
+  databaseURL: "https://test-music-4083a.firebaseio.com",
+  projectId: "test-music-4083a",
+  storageBucket: "",
+  messagingSenderId: "193987209813"
+};
+firebase.initializeApp(config);
 
-// var database = firebase.database();
+var database = firebase.database();
 
+var authClient = new FirebaseSimpleLogin(myRef, function(error, user) { ... });
+authClient.createUser(email, password, function(error, user) {
+  if (error === null) {
+    console.log("User created successfully:", user);
+  } else {
+    console.log("Error creating user:", error);
+  }
+});
 
-// ytSearch("porter robinson");
+var authClient = new FirebaseSimpleLogin(myRef, function(error, user) { ... });
+authClient.login('password', {
+  email: '<email@domain.com>',
+  password: '<password>'
+});
 
-// $("#submit").on("click", function() {
-//   event.preventDefault();
-//   console.log("button pressed")
-//   var artist = $("#artist").val().trim();
+$("#submit").on("click", function() {
 
-//   database.ref().push({
-//     artist: artist
-//   })
-// })
+})
 
 // curl -X "POST" -H "Authorization: Basic ZjM4ZjAw...WY0MzE=" -d grant_type=client_credentials https://accounts.spotify.com/api/token
 
