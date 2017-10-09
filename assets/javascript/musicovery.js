@@ -39,10 +39,8 @@ $.ajax({
   similarURL = "https://cors-anywhere.herokuapp.com/http://musicovery.com/api/V4/artist.php?fct=getsimilar&id=" + simArtist + "&resultsnumber=3&apikey=3lqa89g1&format=json"
   var artistGenre = JSON.parse(response).root.artists.artist.genre;
   var artistCountry = JSON.parse(response).root.artists.artist.country;
-  var genre = $("<p>").addClass("genre-class").append("Genre: " + artistGenre);
-  var country = $("<p>").addClass("country-class").append("Country: " + artistCountry);
-  console.log(genre)
-  console.log(country)
+  var genre = $("<p>").addClass("genre-class");
+  var country = $("<p>").addClass("country-class");
   $("#artist-info").addClass("col-md-3");
   $("#artist-info").append("<h3>" + artistName + "</h3>");
   $("#artist-info").append(genre);
