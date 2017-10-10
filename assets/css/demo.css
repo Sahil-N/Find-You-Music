@@ -150,9 +150,7 @@ section p {
   margin: 0;
 }
 
-section p + p {
-  text-indent: 2em;
-}
+
 
 section + hr {
   border: 0;
