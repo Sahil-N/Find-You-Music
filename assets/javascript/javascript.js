@@ -49,30 +49,60 @@ var similarName = [];
 function getSimilar() {
   console.log(artistId);
   $.ajax({
-    url: "https://cors-anywhere.herokuapp.com/http://musicovery.com/api/V4/artist.php?fct=getsimilar&id=" + artistId + "&resultsnumber=3&format=json",
+    url: "https://cors-anywhere.herokuapp.com/http://musicovery.com/api/V4/artist.php?fct=getsimilar&id=" + artistId + "&apikey=3lqa89g1&resultsnumber=3&format=json",
     method: "GET"
   }).done(function(response) {
-    for (var i = 0; i < 3; i++) {
-      var name = JSON.parse(response).root.artists.artist[i].name;
-      var mbid = JSON.parse(response).root.artists.artist[i].mbid;
+    // for (var i = 0; i < 1; i++) {
+      var name = JSON.parse(response).root.artists.artist[0].name;
+      var mbid = JSON.parse(response).root.artists.artist[0].mbid;
       similarMbid.push(mbid);
       similarName.push(name);
 
-      var responseGenre = JSON.parse(response).root.artists.artist[i].genre;
-      var responseCountry = JSON.parse(response).root.artists.artist[i].country;
+      var responseGenre = JSON.parse(response).root.artists.artist[0].genre;
+      var responseCountry = JSON.parse(response).root.artists.artist[0].country;
       var genre = $("<p>").addClass("genre-class").append("Genre: " + responseGenre);
       var country = $("<p>").addClass("country-class").append("Country: " + responseCountry);
-      $("#similar-artist-info").addClass("col-md-3");
-      $("#similar-artist-info").append("<h3>" + name + "</h3>");
-      $("#similar-artist-info").append(genre);
-      $("#similar-artist-info").append(country);
+      $("#similar-artist-info0").addClass("col-md-3");
+      $("#similar-artist-info0").append("<h3>" + name + "</h3>");
+      $("#similar-artist-info0").append(genre);
+      $("#similar-artist-info0").append(country);
       ytSearch(name);
-    }
+     2]
+      var name = JSON.parse(response).root.artists.artist[1].name;
+      var mbid = JSON.parse(response).root.artists.artist[1].mbid;
+      similarMbid.push(mbid);
+      similarName.push(name);
+
+      var responseGenre = JSON.parse(response).root.artists.artist[1].genre;
+      var responseCountry = JSON.parse(response).root.artists.artist[1].country;
+      var genre = $("<p>").addClass("genre-class").append("Genre: " + responseGenre);
+      var country = $("<p>").addClass("country-class").append("Country: " + responseCountry);
+      $("#similar-artist-info1").addClass("col-md-3");
+      $("#similar-artist-info1").append("<h3>" + name + "</h3>");
+      $("#similar-artist-info1").append(genre);
+      $("#similar-artist-info1").append(country);
+      ytSearch(name);
+
+      var name = JSON.parse(response).root.artists.artist[2].name;
+      var mbid = JSON.parse(response).root.artists.artist[2].mbid;
+      similarMbid.push(mbid);
+      similarName.push(name);
+
+      var responseGenre = JSON.parse(response).root.artists.artist[0].genre;
+      var responseCountry = JSON.parse(response).root.artists.artist[0].country;
+      var genre = $("<p>").addClass("genre-class").append("Genre: " + responseGenre);
+      var country = $("<p>").addClass("country-class").append("Country: " + responseCountry);
+      $("#similar-artist-info2").addClass("col-md-3");
+      $("#similar-artist-info2").append("<h3>" + name + "</h3>");
+      $("#similar-artist-info2").append(genre);
+      $("#similar-artist-info2").append(country);
+      ytSearch(name);
+    // }
   })
 }
 
 function getArtist(name) {
-  var queryURL = "https://cors-anywhere.herokuapp.com/http://musicovery.com/api/V4/artist.php?fct=search&artistname=" + name + "&format=json"
+  var queryURL = "https://cors-anywhere.herokuapp.com/http://musicovery.com/api/V4/artist.php?fct=search&artistname=" + name + "&apikey=3lqa89g1&format=json"
   $.ajax({
     url: queryURL,
     method: "GET"
