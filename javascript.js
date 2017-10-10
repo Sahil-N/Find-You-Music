@@ -23,6 +23,7 @@ $("#loginbutton").on("click", function() {
   updateHistory();
 })
 
+
 function updateHistory() {
   $("#history").empty();
   database.ref(login).on("child_added", function(snapshot) {
@@ -67,7 +68,7 @@ function getSimilar() {
       $("#similar-artist-info0").append(genre);
       $("#similar-artist-info0").append(country);
       ytSearch(name);
-     2]
+     
       var name = JSON.parse(response).root.artists.artist[1].name;
       var mbid = JSON.parse(response).root.artists.artist[1].mbid;
       similarMbid.push(mbid);
@@ -88,8 +89,8 @@ function getSimilar() {
       similarMbid.push(mbid);
       similarName.push(name);
 
-      var responseGenre = JSON.parse(response).root.artists.artist[0].genre;
-      var responseCountry = JSON.parse(response).root.artists.artist[0].country;
+      var responseGenre = JSON.parse(response).root.artists.artist[2].genre;
+      var responseCountry = JSON.parse(response).root.artists.artist[2].country;
       var genre = $("<p>").addClass("genre-class").append("Genre: " + responseGenre);
       var country = $("<p>").addClass("country-class").append("Country: " + responseCountry);
       $("#similar-artist-info2").addClass("col-md-3");
