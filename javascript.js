@@ -10,6 +10,7 @@ var config = {
   messagingSenderId: "1098210242637"
 };
 firebase.initializeApp(config);
+
 var database = firebase.database();
 
 var intervalId;
