@@ -133,6 +133,11 @@ function ytSearch(search) {
     url: ytqueryURL,
     method: "GET"
   }).done(function(response) {
+       for (var i = 0; i < 3; i++) {
+       var videoLink = "https://www.youtube.com/embed/" + response.items[i].id.videoId + '?&theme=dark&autohide=2&modestbranding=1&fs=0&showinfo=0&iv_load_policy=3"frameborder="0';
+       var newYT = $("<iframe>").attr("src", videoLink);
+      $("#artist-info").append(newYT);
+ }
   console.log("https://www.youtube.com/watch?v=" + response.items[0].id.videoId);
   })
 }

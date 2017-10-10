@@ -56,7 +56,7 @@ function getSimilar() {
     method: "GET"
   }).done(function(response) {
     // for (var i = 0; i < 1; i++) {
-      var name = JSON.parse(response).root.artists.artist[0].name;
+      var name0 = JSON.parse(response).root.artists.artist[0].name;
       var mbid = JSON.parse(response).root.artists.artist[0].mbid;
       similarMbid.push(mbid);
       similarName.push(name);
@@ -66,12 +66,12 @@ function getSimilar() {
       var genre = $("<p>").addClass("genre-class").append("Genre: " + responseGenre);
       var country = $("<p>").addClass("country-class").append("Country: " + responseCountry);
       $("#similar-artist-info0").addClass("col-md-3");
-      $("#similar-artist-info0").append("<h3>" + name + "</h3>");
+      $("#similar-artist-info0").append("<h3>" + name0 + "</h3>");
       $("#similar-artist-info0").append(genre);
       $("#similar-artist-info0").append(country);
-      ytSearch(name);
+      ytSearch0(name0);
      
-      var name = JSON.parse(response).root.artists.artist[1].name;
+      var name1 = JSON.parse(response).root.artists.artist[1].name;
       var mbid = JSON.parse(response).root.artists.artist[1].mbid;
       similarMbid.push(mbid);
       similarName.push(name);
@@ -81,12 +81,12 @@ function getSimilar() {
       var genre = $("<p>").addClass("genre-class").append("Genre: " + responseGenre);
       var country = $("<p>").addClass("country-class").append("Country: " + responseCountry);
       $("#similar-artist-info1").addClass("col-md-3");
-      $("#similar-artist-info1").append("<h3>" + name + "</h3>");
+      $("#similar-artist-info1").append("<h3>" + name1 + "</h3>");
       $("#similar-artist-info1").append(genre);
       $("#similar-artist-info1").append(country);
-      ytSearch(name);
+      ytSearch1(name1);
 
-      var name = JSON.parse(response).root.artists.artist[2].name;
+      var name2 = JSON.parse(response).root.artists.artist[2].name;
       var mbid = JSON.parse(response).root.artists.artist[2].mbid;
       similarMbid.push(mbid);
       similarName.push(name);
@@ -96,10 +96,10 @@ function getSimilar() {
       var genre = $("<p>").addClass("genre-class").append("Genre: " + responseGenre);
       var country = $("<p>").addClass("country-class").append("Country: " + responseCountry);
       $("#similar-artist-info2").addClass("col-md-3");
-      $("#similar-artist-info2").append("<h3>" + name + "</h3>");
+      $("#similar-artist-info2").append("<h3>" + name2 + "</h3>");
       $("#similar-artist-info2").append(genre);
       $("#similar-artist-info2").append(country);
-      ytSearch(name);
+      ytSearch2(name2);
     // }
   })
 }
@@ -125,7 +125,6 @@ function getArtist(name) {
     ytSearch(name);
   })
 }
-
 function ytSearch(search) {
   var ytapikey = "AIzaSyB0WhHsY5aNb5nP0FA-KmWW7baChjnkK_I";
   console.log(search);
@@ -134,6 +133,60 @@ function ytSearch(search) {
     url: ytqueryURL,
     method: "GET"
   }).done(function(response) {
+       var videoLink = "https://www.youtube.com/embed/" + response.items[0].id.videoId + '?&theme=dark&autohide=2&modestbranding=1&fs=0&showinfo=0&iv_load_policy=3"frameborder="0';
+       var newYT = $("<iframe>").attr("src", videoLink);
+       // var framez = $("#YT" + i).addClass("framez" + i);
+       $("#artist-info").append(newYT);
+  })
+}
+function ytSearch0(search) {
+  var ytapikey = "AIzaSyB0WhHsY5aNb5nP0FA-KmWW7baChjnkK_I";
+  console.log(search);
+  var ytqueryURL = "https://www.googleapis.com/youtube/v3/search?q=" + search + "&key=" + ytapikey + "&part=snippet&type=video"
+  $.ajax({
+    url: ytqueryURL,
+    method: "GET"
+  }).done(function(response) {
+   for (var i = 0; i < 3; i++) {
+       var videoLink = "https://www.youtube.com/embed/" + response.items[i].id.videoId + '?&theme=dark&autohide=2&modestbranding=1&fs=0&showinfo=0&iv_load_policy=3"frameborder="0';
+       var newYT = $("<iframe>").attr("src", videoLink);
+       // var framez = $("#YT" + i).addClass("framez" + i);
+       $("#YT0").append(newYT);
+     }
+  console.log("https://www.youtube.com/watch?v=" + response.items[0].id.videoId);
+  })
+}
+function ytSearch1(search) {
+  var ytapikey = "AIzaSyB0WhHsY5aNb5nP0FA-KmWW7baChjnkK_I";
+  console.log(search);
+  var ytqueryURL = "https://www.googleapis.com/youtube/v3/search?q=" + search + "&key=" + ytapikey + "&part=snippet&type=video"
+  $.ajax({
+    url: ytqueryURL,
+    method: "GET"
+  }).done(function(response) {
+   for (var i = 0; i < 3; i++) {
+       var videoLink = "https://www.youtube.com/embed/" + response.items[i].id.videoId + '?&theme=dark&autohide=2&modestbranding=1&fs=0&showinfo=0&iv_load_policy=3"frameborder="0';
+       var newYT = $("<iframe>").attr("src", videoLink);
+       // var framez = $("#YT" + i).addClass("framez" + i);
+       $("#YT1").append(newYT);
+     }
+  console.log("https://www.youtube.com/watch?v=" + response.items[0].id.videoId);
+  })
+}
+function ytSearch2(search) {
+  var ytapikey = "AIzaSyB0WhHsY5aNb5nP0FA-KmWW7baChjnkK_I";
+  console.log(search);
+  var ytqueryURL = "https://www.googleapis.com/youtube/v3/search?q=" + search + "&key=" + ytapikey + "&part=snippet&type=video"
+  $.ajax({
+    url: ytqueryURL,
+    method: "GET"
+  }).done(function(response) {
+   for (var i = 0; i < 3; i++) {
+       var videoLink = "https://www.youtube.com/embed/" + response.items[i].id.videoId + '?&theme=dark&autohide=2&modestbranding=1&fs=0&showinfo=0&iv_load_policy=3"frameborder="0';
+       var newYT = $("<iframe>").attr("src", videoLink);
+       // var framez = $("#YT" + i).addClass("framez" + i);
+       $("#YT2").append(newYT);
+     }
   console.log("https://www.youtube.com/watch?v=" + response.items[0].id.videoId);
   })
 }
