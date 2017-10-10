@@ -13,12 +13,11 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-var intervalId;
 var artistId;
 var login;
 
 function updateHistory() {
-  database.ref(login).limitToLast(7).on("child_added", function(snapshot) {
+  database.ref(login).limitToLast(10).on("child_added", function(snapshot) {
     var name = snapshot.val().search;
     var newButton = $("<button>").text(name);
     newButton.attr("class", "list-group-item rendered")
@@ -128,7 +127,7 @@ function getArtist(name) {
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).done(function(response){                                                                                                                                                                                                                                                               
+  }).done(function(response){
     artistId = JSON.parse(response).root.artists.artist.mbid;
     var artistName = JSON.parse(response).root.artists.artist.name;
     var artistGenre = JSON.parse(response).root.artists.artist.genre;
@@ -137,7 +136,7 @@ function getArtist(name) {
     var country = $("<p>").addClass("country-class").append("Country: " + artistCountry);
     $("#artist-info").addClass("col-md-3");
     $("#artist-info").append("<h3>" + artistName + "</h3>", genre, country);
-    intervalId = setTimeout(getSimilar, 1001);
+    setTimeout(getSimilar, 1001);
     ytSearch(name);
   })
 }
@@ -153,7 +152,6 @@ function clearStuff() {
 
 $("#loginbutton").on("click", function() {
   login = $("#loginname").val().trim();
-  console.log(login);
   $("#loginname").hide();
   $("#loginbutton").hide();
   $("#searches").show();
@@ -162,8 +160,8 @@ $("#loginbutton").on("click", function() {
 })
 
 $("#history").on("click", ".rendered", function() {
-  var artist = $(this).attr("data-name");
   clearStuff();
+  var artist = $(this).attr("data-name");
   getArtist(artist);
 })
 
