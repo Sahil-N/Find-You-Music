@@ -2,12 +2,16 @@ h1, .jumbotron {
  background-color: #99b8e7;
  color: #97837C;
  text-align: center;
- font-size: 40px;
+
 }
 h3 {
   display: inline;
   color: #B7C3F3;
   font-weight: 700;
+  font-size: 80px;
+  opacity: 0.7;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+
 }
 .country-class {
   padding-bottom: 30px;
@@ -24,9 +28,15 @@ h3 {
 }
 .genre-class {
   color: #009FB7;
+  font-size: 30px;
+  opacity: 0.7;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
 .country-class {
   color: #009FB7;
+  font-size: 30px;
+  opacity: 0.7;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
 /*#login {
   display: inline;
