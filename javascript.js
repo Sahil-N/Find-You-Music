@@ -17,7 +17,7 @@ var artistId;
 var login;
 
 function updateHistory() {
-  database.ref(login).limitToLast(7).on("child_added", function(snapshot) {
+  database.ref(login).limitToLast(10).on("child_added", function(snapshot) {
     var name = snapshot.val().search;
     var newButton = $("<button>").text(name);
     newButton.attr("class", "list-group-item rendered")
@@ -152,7 +152,6 @@ function clearStuff() {
 
 $("#loginbutton").on("click", function() {
   login = $("#loginname").val().trim();
-  console.log(login);
   $("#loginname").hide();
   $("#loginbutton").hide();
   $("#searches").show();
