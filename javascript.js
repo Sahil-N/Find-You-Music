@@ -143,6 +143,7 @@ function getArtist(name) {
 
 function clearStuff() {
   $("#artist-info").empty();
+  $("#artist-p").empty();
   $("#similar-artist-info").empty();
   $(".clear").empty();
   $("#YT0").empty();
