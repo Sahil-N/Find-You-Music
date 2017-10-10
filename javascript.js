@@ -9,10 +9,12 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
+var intervalId;
+
 $("#searches").hide();
 $("#find-artists").hide();
 
-var login = "";
+var login;
 $("#loginbutton").on("click", function() {
   login = $("#loginname").val().trim();
   console.log(login);
@@ -23,10 +25,9 @@ $("#loginbutton").on("click", function() {
   updateHistory();
 })
 
-
 function updateHistory() {
   $("#history").empty();
-  database.ref(login).on("child_added", function(snapshot) {
+  database.ref(login).limitToLast(10).on("child_added", function(snapshot) {
     var history = snapshot.val().search;
     var newButton = $("<button>").text(history);
     newButton.attr("class", "list-group-item rendered")
@@ -39,6 +40,7 @@ $("#history").on("click", ".rendered", function() {
   var artist = $(this).attr("data-name");
   $("#artist-info").empty();
   $("#similar-artist-info").empty();
+  $(".clear").empty();
   getArtist(artist);
 })
 
@@ -119,9 +121,8 @@ function getArtist(name) {
     $("#artist-info").append("<h3>" + artistName + "</h3>");
     $("#artist-info").append(genre);
     $("#artist-info").append(country);
-    getSimilar(artistId);
+    intervalId = setTimeout(getSimilar, 1001);
     ytSearch(name);
-    updateHistory();
   })
 }
 
@@ -144,5 +145,6 @@ $("#find-artists").on("click", function(){
   database.ref(login).push({
     search: artist
   })
+  $(".clear").empty();
   getArtist(artist);
 });
