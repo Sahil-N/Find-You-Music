@@ -204,7 +204,15 @@ section .gist-meta {
   margin: 0 4px;
   text-decoration: none;
 }
-
+#YT0 {
+  text-align: center;
+}
+#YT1 {
+  text-align: center;
+}
+#YT2 {
+  text-align: center;
+}
 .btn-cta:hover {
   background-color: white;
   color: #228B22;
