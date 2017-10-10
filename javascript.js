@@ -134,8 +134,8 @@ function getArtist(name) {
     var artistCountry = JSON.parse(response).root.artists.artist.country;
     var genre = $("<p>").addClass("genre-class").append("Genre: " + artistGenre);
     var country = $("<p>").addClass("country-class").append("Country: " + artistCountry);
-    $("#artist-info").addClass("col-md-3");
-    $("#artist-info").append("<h3>" + artistName + "</h3>", genre, country);
+    $("#artist-p").addClass("col-md-3");
+    $("#artist-p").append("<h3>" + artistName + "</h3>", genre, country);
     setTimeout(getSimilar, 1001);
     ytSearch(name);
   })
