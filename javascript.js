@@ -1,12 +1,12 @@
-var config = {
-  apiKey: "AIzaSyDutKB5-pO3S0vsKPmUCfeL6V5KT1hRzNg",
-  authDomain: "test-music-4083a.firebaseapp.com",
-  databaseURL: "https://test-music-4083a.firebaseio.com",
-  projectId: "test-music-4083a",
-  storageBucket: "",
-  messagingSenderId: "193987209813"
-};
-firebase.initializeApp(config);
+  var config = {
+    apiKey: "AIzaSyBZ8sRlcmt39GEWn6r35ZQoWXVs2CMgHDE",
+    authDomain: "find-you-music.firebaseapp.com",
+    databaseURL: "https://find-you-music.firebaseio.com",
+    projectId: "find-you-music",
+    storageBucket: "find-you-music.appspot.com",
+    messagingSenderId: "1098210242637"
+  };
+  firebase.initializeApp(config);
 var database = firebase.database();
 
 var intervalId;
