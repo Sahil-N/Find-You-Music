@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Find You Music</title>
+</head>
+
+
+<!-- <link rel="stylesheet" type="text/css" href="assets/styles.css"> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="assets/css/app.css">
+
+
+
+
+<body>
+
+
+<!-- HEADER -->
+<div class="container">
+  <div class="page-header">
+      <h1 id="header" class="jumbotron">Find You Music<small> </small></h1>
+  </div>
+<!-- HEADER END -->
+
+
+
+
+
+  <div class="row">
+
+<!-- artist's info -->
+    <div class="col-md-9">
+      <div id="artist-info">
+      </div>
+      <div id="artist-video" class="col-md-6">
+      </div>
+      <div id="artist-playlist" class="col-md-3">
+      </div>
+    </div>
+    <!-- INPUT's & SEARCH -->
+    <div class="col-md-3">
+
+        <div class="input-group">
+            <input type="text" id="searches" class="form-control" placeholder="- artist name -">
+            <!-- this SPAN makes the button in-line to my search bar -->
+<!--             <span class="input-group-btn"> 
+              <button class="btn btn-default" id="find-artists" type="button">Go!</button>
+            </span> -->
+        <!-- </div><br>  -->
+        <!-- <div class="input-group"> -->
+            <!-- <input type="number" id="similar-output" class="form-control" value="3" placeholder="- amount of similar artists -"> -->
+            <!-- this SPAN makes the button in-line to my search bar -->
+            <span class="input-group-btn"> 
+              <button class="btn btn-default" id="find-artists" type="button">Go!</button>
+            </span>
+        </div><br> 
+        <div class="list-group" id="history"> 
+        <!-- fill with array divs & newly added artist buttons -->
+        </div>
+    </div>  <!-- col-lg-4 DIV -->
+  </div> <!-- Row DIV -->
+  <div class="row">
+    <div class="col-md-8">
+
+      <div id="similar-artist-info">
+      </div>
+      <div id="artist-video" class="col-md-6">
+      </div>
+      <div id="artist-playlist" class="col-md-3">
+      </div>
+    </div>
+  </div>
+<!-- artists's info END -->
+
+
+
+</div> <!-- Container DIV -->
+
+<!-- INPUT's & SEARCH -->
+
+
+
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="assets/javascript/musicovery.js"></script>
+<script type="text/javascript" src="assets/javascript/youtube.js"></script>
+</body>
+</html>
