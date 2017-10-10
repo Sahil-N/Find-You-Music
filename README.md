@@ -8,4 +8,3 @@ This is an application that lets users search for an artist or band, and the app
 * [Firebase](https://firebase.google.com/)
 * [Musicovery API](http://musicovery.com/api/V4/doc/documentation.php)
 * [Youtube API](https://developers.google.com/youtube/)
-* [Google Custom Search API](https://developers.google.com/custom-search/)
